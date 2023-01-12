@@ -1,5 +1,5 @@
 import React from "react";
-import { MuiTelInput, matchIsValidTel } from "mui-tel-input";
+import { MuiTelInput } from "mui-tel-input";
 import { styled } from "@mui/material/styles";
 import { Controller } from "react-hook-form";
 import InputAdornment from "@mui/material/InputAdornment";
@@ -18,9 +18,9 @@ const PhoneInput = ({ control, errors }) => {
   return (
     <Controller
       name="tel"
+      defaultValue=""
       control={control}
-      rules={{ validate: matchIsValidTel }}
-      render={({ field, fieldState }) => (
+      render={({ field }) => (
         <MuiTelInputStyled
           {...field}
           defaultCountry="NO"
@@ -42,8 +42,8 @@ const PhoneInput = ({ control, errors }) => {
           ]}
           variant="standard"
           label="Phone Number"
-          helperText={fieldState.invalid ? "phone number is invalid" : ""}
-          error={fieldState.invalid}
+          error={Boolean(errors.tel)}
+          helperText={errors.tel ? errors.tel.message : ""}
           InputProps={
             errors.tel
               ? {

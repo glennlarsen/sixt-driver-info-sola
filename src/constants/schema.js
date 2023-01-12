@@ -18,8 +18,7 @@ const schema = yup.object().shape({
     .string()
     .nullable()
     .transform((v, o) => (o === '' ? null : v))
-    .max(MAX_PHONE_NUMBERS, "Phone number is to long")
-    .min(MIN_PHONE_NUMBERS, "Phone number is to short"),
+    .max(MAX_PHONE_NUMBERS, "Phone number is to long"),
   street: yup.string().nullable().transform((v, o) => (o === '' ? null : v)),
 });
 

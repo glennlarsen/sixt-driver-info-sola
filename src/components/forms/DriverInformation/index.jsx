@@ -115,6 +115,17 @@ function DriverInformation() {
             label="Country"
             error={Boolean(errors.country)}
             helperText={errors.country ? errors.country.message : ""}
+            InputProps={
+              errors.street
+                ? {
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <ErrorRoundedIcon color="error" />
+                      </InputAdornment>
+                    ),
+                  }
+                : null
+            }
           />
         )}
       />
