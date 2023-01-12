@@ -14,7 +14,7 @@ const schema = yup.object().shape({
     .nullable()
     .transform((v, o) => (o === '' ? null : v))
     .matches(EMAIL_REGEX, "Enter a valid email"),
-  phone: yup
+  tel: yup
     .string()
     .nullable()
     .transform((v, o) => (o === '' ? null : v))

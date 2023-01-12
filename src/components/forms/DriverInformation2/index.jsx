@@ -14,6 +14,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import schema from "constants/schema";
 import SendDriverInfo2 from "utils/SendDriverInfo2";
 import AlertMessage from "components/AlertMessage";
+import PhoneInput from "components/common/PhoneInput";
 
 const FormTextField = styled(TextField)({
   "& label.Mui-focused": {
@@ -35,6 +36,7 @@ function DriverInformation2() {
     handleSubmit,
     reset,
     getValues,
+    control,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
@@ -55,7 +57,7 @@ function DriverInformation2() {
       }, 5000);
       setSubmitted(true);
       reset();
-      setCountryValue("")
+      setCountryValue("");
     } else {
       setLoading(false);
       setSubmitted(false);
@@ -173,31 +175,7 @@ function DriverInformation2() {
           }
         />
       </Box>
-      <FormTextField
-        variant="standard"
-        label="Phone Number"
-        type="text"
-        placeholder="+..."
-        onKeyPress={(event) => {
-          if (!/[0-9+]/.test(event.key)) {
-            event.preventDefault();
-          }
-        }}
-        {...register("phone")}
-        error={Boolean(errors.phone)}
-        helperText={errors.phone ? errors.phone.message : ""}
-        InputProps={
-          errors.phone
-            ? {
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <ErrorRoundedIcon color="error" />
-                  </InputAdornment>
-                ),
-              }
-            : null
-        }
-      />
+      <PhoneInput control={control} errors={errors} />
       <FormTextField
         variant="standard"
         label="Email"

@@ -9,7 +9,7 @@ async function SendDriverInfo2(data) {
     street: data.street,
     postal: data.postal,
     city: data.city,
-    phone: data.phone,
+    phone: data.tel,
     email: data.email,
   };
 
