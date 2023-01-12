@@ -146,4 +146,12 @@ form {
 
 .MuiTelInput-IconButton {
   box-shadow: none;
+  padding-right: 2em !important;
+  position: absolute !important;
+}
+
+.MuiInputAdornment-root {
+  p {
+    margin-left: 3em !important;
+  }
 }

@@ -15,7 +15,6 @@ const MuiTelInputStyled = styled(MuiTelInput)({
 });
 
 const PhoneInput = ({ control, errors }) => {
-
   return (
     <Controller
       name="tel"
@@ -23,11 +22,24 @@ const PhoneInput = ({ control, errors }) => {
       rules={{ validate: matchIsValidTel }}
       render={({ field, fieldState }) => (
         <MuiTelInputStyled
-        {...field}
+          {...field}
           defaultCountry="NO"
           forceCallingCode
           focusOnSelectCountry
-          preferredCountries={["NO", "SE", "DK", "DE", "US", "GB", "ES", "FR", "NL", "AU", "FI", "PL"]}
+          preferredCountries={[
+            "NO",
+            "SE",
+            "DK",
+            "DE",
+            "US",
+            "GB",
+            "ES",
+            "FR",
+            "NL",
+            "AU",
+            "FI",
+            "PL",
+          ]}
           variant="standard"
           label="Phone Number"
           helperText={fieldState.invalid ? "phone number is invalid" : ""}
