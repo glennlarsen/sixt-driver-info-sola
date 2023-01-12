@@ -189,8 +189,7 @@ function AnswersForm() {
         .map((item) => {
           const { country, street, postal, city, phone, email, publishedAt } =
             item.attributes;
-          const phoneFormated = phone.replace(/\s+/g, "");
-          console.log(phoneFormated);
+          const phoneFormated = phone ? phone.replace(/\s+/g, "") : "";
           var options = {
             weekday: "long",
             year: "numeric",
