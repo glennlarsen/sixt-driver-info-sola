@@ -241,7 +241,7 @@ function AnswersForm() {
                     variant="standard"
                     label="Country"
                     type="text"
-                    defaultValue={answers ? country.toUpperCase() : ""}
+                    defaultValue={country ? country.toUpperCase() : ""}
                     inputRef={countryRef}
                   />
                 </Tooltip>
@@ -268,7 +268,7 @@ function AnswersForm() {
                     variant="standard"
                     label="Street"
                     type="text"
-                    defaultValue={answers ? street.toUpperCase() : ""}
+                    defaultValue={street ? street.toUpperCase() : ""}
                     inputRef={streetRef}
                   />
                 </Tooltip>
@@ -296,7 +296,7 @@ function AnswersForm() {
                       variant="standard"
                       label="Postal Code"
                       type="text"
-                      defaultValue={answers ? postal.toUpperCase() : ""}
+                      defaultValue={postal ? postal.toUpperCase() : ""}
                       inputRef={postalRef}
                     />
                   </Tooltip>
@@ -324,7 +324,7 @@ function AnswersForm() {
                       label="City"
                       type="text"
                       fullWidth
-                      defaultValue={answers ? city.toUpperCase() : ""}
+                      defaultValue={city ? city.toUpperCase() : ""}
                       inputRef={cityRef}
                     />
                   </Tooltip>
@@ -352,7 +352,7 @@ function AnswersForm() {
                     variant="standard"
                     label="Phone Number"
                     type="text"
-                    value={answers ? phoneFormated : ""}
+                    value={phoneFormated ? phoneFormated : ""}
                     inputRef={phoneRef}
                   />
                 </Tooltip>
@@ -379,7 +379,7 @@ function AnswersForm() {
                     variant="standard"
                     label="Email"
                     type="email"
-                    defaultValue={answers ? email.toUpperCase() : ""}
+                    defaultValue={email ? email.toUpperCase() : ""}
                     inputRef={emailRef}
                   />
                 </Tooltip>
