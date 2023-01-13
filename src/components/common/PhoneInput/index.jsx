@@ -14,7 +14,7 @@ const MuiTelInputStyled = styled(MuiTelInput)({
   },
 });
 
-const PhoneInput = ({ control, errors }) => {
+const PhoneInput = ({ control, errors, defaultValue }) => {
   return (
     <Controller
       name="tel"
@@ -23,7 +23,7 @@ const PhoneInput = ({ control, errors }) => {
       render={({ field }) => (
         <MuiTelInputStyled
           {...field}
-          defaultCountry="NO"
+          defaultCountry={defaultValue}
           forceCallingCode
           focusOnSelectCountry
           preferredCountries={[

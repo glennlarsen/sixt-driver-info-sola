@@ -171,7 +171,7 @@ function AnswersForm() {
         <Box className="answers-form">
           <div className="no-answers">
             No Answers Yet. Find a customer that can fill your Live Form! Click
-            Refresh if the result dont show automatically.
+            Refresh if the result don't show automatically.
           </div>
           <button onClick={refreshPage} type="submit">
             Refresh
@@ -241,7 +241,7 @@ function AnswersForm() {
                     variant="standard"
                     label="Country"
                     type="text"
-                    defaultValue={answers ? country : ""}
+                    defaultValue={answers ? country.toUpperCase() : ""}
                     inputRef={countryRef}
                   />
                 </Tooltip>
@@ -268,7 +268,7 @@ function AnswersForm() {
                     variant="standard"
                     label="Street"
                     type="text"
-                    defaultValue={answers ? street : ""}
+                    defaultValue={answers ? street.toUpperCase() : ""}
                     inputRef={streetRef}
                   />
                 </Tooltip>
@@ -296,7 +296,7 @@ function AnswersForm() {
                       variant="standard"
                       label="Postal Code"
                       type="text"
-                      defaultValue={answers ? postal : ""}
+                      defaultValue={answers ? postal.toUpperCase() : ""}
                       inputRef={postalRef}
                     />
                   </Tooltip>
@@ -324,7 +324,7 @@ function AnswersForm() {
                       label="City"
                       type="text"
                       fullWidth
-                      defaultValue={answers ? city : ""}
+                      defaultValue={answers ? city.toUpperCase() : ""}
                       inputRef={cityRef}
                     />
                   </Tooltip>
@@ -379,7 +379,7 @@ function AnswersForm() {
                     variant="standard"
                     label="Email"
                     type="email"
-                    defaultValue={answers ? email : ""}
+                    defaultValue={answers ? email.toUpperCase() : ""}
                     inputRef={emailRef}
                   />
                 </Tooltip>
