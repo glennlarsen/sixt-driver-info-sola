@@ -15,6 +15,10 @@ const FormsForm = () => {
     navigate("/form/flesland2");
   };
 
+  const clickForm3 = () => {
+    navigate("/form/flesland3");
+  };
+
   return (
     <Box sx={{ width: "100%" }}>
       <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
@@ -29,7 +33,9 @@ const FormsForm = () => {
           </Paper>
         </Grid>
         <Grid xs={6}>
-          <Paper className="box box-inactive"> Flesland 3</Paper>
+          <Paper onClick={clickForm3} className="box">
+            Flesland 3
+          </Paper>
         </Grid>
         <Grid xs={6}>
           <Paper className="box box-inactive">Flesland 4</Paper>

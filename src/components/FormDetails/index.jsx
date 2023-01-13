@@ -17,6 +17,9 @@ function FormDetails() {
     if (formName === "flesland2") {
       navigate("/liveForm/flesland2");
     }
+    if (formName === "flesland3") {
+      navigate("/liveForm/flesland3");
+    }
   };
 
   const onClickAnswers = () => {
@@ -25,6 +28,9 @@ function FormDetails() {
     }
     if (formName === "flesland2") {
       navigate("/answers/flesland2");
+    }
+    if (formName === "flesland3") {
+      navigate("/answers/flesland3");
     }
   };
 

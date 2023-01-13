@@ -7,6 +7,7 @@ import Head from "components/Head";
 import Layout from "components/Layout";
 import AnswersForm from "components/forms/AnswersForm";
 import AnswersForm2 from "components/forms/AnswersForm2";
+import AnswersForm3 from "components/forms/AnswersForm3";
 
 function Answers() {
   const { formName } = useParams();
@@ -23,6 +24,7 @@ function Answers() {
       <Layout backPage={`form/${formName}`}>
         {formName === "flesland1" && <AnswersForm />}
         {formName === "flesland2" && <AnswersForm2 />}
+        {formName === "flesland3" && <AnswersForm3 />}
       </Layout>
     </Container>
   );
