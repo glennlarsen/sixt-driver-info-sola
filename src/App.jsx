@@ -9,9 +9,9 @@ import Login from "pages/Login";
 import HowItWorks from "pages/HowItWorks";
 
 const App = () => {
-  let http = require("http");
+  let http = require("https");
   setInterval(function () {
-    http.get("http://aesthetic-ganache-e71002.netlify.app/");
+    http.get("https://aesthetic-ganache-e71002.netlify.app/");
   }, 300000); // every 5 minutes (300000)
 
   return (
