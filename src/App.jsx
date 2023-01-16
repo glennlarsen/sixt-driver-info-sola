@@ -9,6 +9,7 @@ import Login from "pages/Login";
 import HowItWorks from "pages/HowItWorks";
 
 const App = () => {
+  //Keeps Heroku Dynos awake 24/7
   let http = require("https");
   setInterval(function () {
     http.get("https://aesthetic-ganache-e71002.netlify.app/");
