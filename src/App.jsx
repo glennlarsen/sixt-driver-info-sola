@@ -1,7 +1,5 @@
 import "./sass/style.scss";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { BASE_URL, DRIVERFORM1 } from "constants/apiKeys";
-import useApi from "utils/useApi";
 
 import Answers from "pages/Answers";
 import Forms from "pages/Forms";
@@ -11,9 +9,10 @@ import Login from "pages/Login";
 import HowItWorks from "pages/HowItWorks";
 
 const App = () => {
-  const url = BASE_URL + DRIVERFORM1;
-  const { answers } = useApi(url);
-  console.log(answers);
+  let http = require("https");
+  setInterval(function () {
+    http.get("https://aesthetic-ganache-e71002.netlify.app/");
+  }, 300000); // every 5 minutes (300000)
 
   return (
     <Router>
