@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import Box from "@mui/material/Box";
 import DoneIcon from "@mui/icons-material/Done";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useSpring, animated } from "@react-spring/web";
 
 import schema from "constants/schema";
 import SendDriverInfo2 from "utils/SendDriverInfo2";
@@ -53,12 +54,30 @@ function DriverInformation2() {
     }
   }
 
+  const slide = useSpring({
+    from: { x: -1000 },
+    to: { x: 0 },
+    reset: true,
+    config: { duration: 400 },
+  });
+
+  const opacity = useSpring({
+    from: { scale: 0 },
+    to: { scale: 1 },
+    reset: true,
+    config: { duration: 900 },
+  });
+
   if (loading && submitted) {
     return (
-      <div className="loaderContainer form-complete">
-        <DoneIcon sx={{ fontSize: 100, color: "#FF5F00" }} />
-        Thank you! Enjoy your SIXT Experience.
-      </div>
+      <animated.div style={slide}>
+        <div className="loaderContainer form-complete">
+          <animated.div style={opacity}>
+            <DoneIcon sx={{ fontSize: 100, color: "#FF5F00" }} />
+          </animated.div>
+          Thank you! Enjoy your SIXT Experience.
+        </div>
+      </animated.div>
     );
   }
 
