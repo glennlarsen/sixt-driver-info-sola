@@ -8,29 +8,27 @@ function FormDetails() {
   const navigate = useNavigate();
   const { formName } = useParams();
 
-  console.log(formName);
-
   const onClickLiveForm = () => {
-    if (formName === "flesland1") {
-      navigate("/liveForm/flesland1");
+    if (formName === "sola1") {
+      navigate("/liveForm/sola1");
     }
-    if (formName === "flesland2") {
-      navigate("/liveForm/flesland2");
+    if (formName === "sola2") {
+      navigate("/liveForm/sola2");
     }
-    if (formName === "flesland3") {
-      navigate("/liveForm/flesland3");
+    if (formName === "sola3") {
+      navigate("/liveForm/sola3");
     }
   };
 
   const onClickAnswers = () => {
-    if (formName === "flesland1") {
-      navigate("/answers/flesland1");
+    if (formName === "sola1") {
+      navigate("/answers/sola1");
     }
-    if (formName === "flesland2") {
-      navigate("/answers/flesland2");
+    if (formName === "sola2") {
+      navigate("/answers/sola2");
     }
-    if (formName === "flesland3") {
-      navigate("/answers/flesland3");
+    if (formName === "sola3") {
+      navigate("/answers/sola3");
     }
   };
 

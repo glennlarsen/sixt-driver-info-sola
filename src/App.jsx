@@ -7,6 +7,7 @@ import Form from "pages/Form";
 import LiveForm from "pages/LiveForm";
 import Login from "pages/Login";
 import HowItWorks from "pages/HowItWorks";
+import { AuthProvider } from "utils/AuthContext";
 
 const App = () => {
   //Keeps Heroku Dynos awake 24/7
@@ -16,23 +17,25 @@ const App = () => {
   }, 300000); // every 5 minutes (300000)
 
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/howitworks" element={<HowItWorks />} />
-        <Route path="/forms" element={<Forms />} />
-        <Route path="/form" element={<Form />} />
-        {["/form", "/form/:formName"].map((path, index) => {
-          return <Route path={path} element={<Form />} key={index} />;
-        })}
-        {["/liveform", "/liveform/:formName"].map((path, index) => {
-          return <Route path={path} element={<LiveForm />} key={index} />;
-        })}
-        {["/answers", "/answers/:formName"].map((path, index) => {
-          return <Route path={path} element={<Answers />} key={index} />;
-        })}
-      </Routes>
-    </Router>
+    <AuthProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/howitworks" element={<HowItWorks />} />
+          <Route path="/forms" element={<Forms />} />
+          <Route path="/form" element={<Form />} />
+          {["/form", "/form/:formName"].map((path, index) => {
+            return <Route path={path} element={<Form />} key={index} />;
+          })}
+          {["/liveform", "/liveform/:formName"].map((path, index) => {
+            return <Route path={path} element={<LiveForm />} key={index} />;
+          })}
+          {["/answers", "/answers/:formName"].map((path, index) => {
+            return <Route path={path} element={<Answers />} key={index} />;
+          })}
+        </Routes>
+      </Router>
+    </AuthProvider>
   );
 };
 

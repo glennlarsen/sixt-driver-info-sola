@@ -1,4 +1,7 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import AuthContext from "utils/AuthContext";
+
 import Container from "components/Container";
 import Header from "components/Header";
 import Head from "components/Head";
@@ -6,6 +9,15 @@ import FormsForm from "components/forms/FormsForm";
 import Layout from "components/Layout/index";
 
 const Forms = () => {
+  const [auth] = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!auth) {
+      navigate("/");
+    }
+  }, []);
+  
   return (
     <Container>
       <Head

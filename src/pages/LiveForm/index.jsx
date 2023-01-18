@@ -17,9 +17,9 @@ function LiveForm() {
         description="Driver information form for clients to fill"
       />
       <Header title="Driver Information" info={formName} />
-      {formName === "flesland1" && <DriverInformation />}
-      {formName === "flesland2" && <DriverInformation2 />}
-      {formName === "flesland3" && <DriverInformation3 />}
+      {formName === "sola1" && <DriverInformation />}
+      {formName === "sola2" && <DriverInformation2 />}
+      {formName === "sola3" && <DriverInformation3 />}
     </Container>
   );
 }

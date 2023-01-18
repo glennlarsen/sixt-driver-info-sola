@@ -1,5 +1,6 @@
-import React from "react";
-import { useParams } from "react-router-dom";
+import React, { useContext, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import AuthContext from "utils/AuthContext";
 
 import Container from "components/Container";
 import Header from "components/Header";
@@ -11,8 +12,14 @@ import AnswersForm3 from "components/forms/AnswersForm3";
 
 function Answers() {
   const { formName } = useParams();
+  const [auth] = useContext(AuthContext);
+  const navigate = useNavigate();
 
-  console.log(formName);
+  useEffect(() => {
+    if (!auth) {
+      navigate("/");
+    }
+  }, []);
 
   return (
     <Container>
@@ -22,9 +29,9 @@ function Answers() {
       />
       <Header title="Answers" flex={2} info={formName} />
       <Layout backPage={`form/${formName}`}>
-        {formName === "flesland1" && <AnswersForm />}
-        {formName === "flesland2" && <AnswersForm2 />}
-        {formName === "flesland3" && <AnswersForm3 />}
+        {formName === "sola1" && <AnswersForm />}
+        {formName === "sola2" && <AnswersForm2 />}
+        {formName === "sola3" && <AnswersForm3 />}
       </Layout>
     </Container>
   );

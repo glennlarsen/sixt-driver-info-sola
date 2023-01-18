@@ -8,15 +8,11 @@ const FormsForm = () => {
   const navigate = useNavigate();
 
   const clickForm1 = () => {
-    navigate("/form/flesland1");
+    navigate("/form/sola1");
   };
 
   const clickForm2 = () => {
-    navigate("/form/flesland2");
-  };
-
-  const clickForm3 = () => {
-    navigate("/form/flesland3");
+    navigate("/form/sola2");
   };
 
   return (
@@ -24,21 +20,19 @@ const FormsForm = () => {
       <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
         <Grid xs={6}>
           <Paper onClick={clickForm1} className="box">
-            Flesland 1
+            Sola 1
           </Paper>
         </Grid>
         <Grid xs={6}>
           <Paper onClick={clickForm2} className="box">
-            Flesland 2
+            Sola 2
           </Paper>
         </Grid>
         <Grid xs={6}>
-          <Paper onClick={clickForm3} className="box">
-            Flesland 3
-          </Paper>
+          <Paper className="box box-inactive">Sola 3</Paper>
         </Grid>
         <Grid xs={6}>
-          <Paper className="box box-inactive">Flesland 4</Paper>
+          <Paper className="box box-inactive">Sola 4</Paper>
         </Grid>
         <Grid xs={6}>
           <Paper className="box-new box-inactive">New form</Paper>

@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
 import { stack as Menu } from "react-burger-menu";
+import { confirmAlert } from "react-confirm-alert";
+import AuthContext from "utils/AuthContext";
 
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import Tooltip from "@mui/material/Tooltip";
 
 function Layout({ children, showBackButton, backPage, showHowItWorks }) {
+  const [auth, setAuth] = useContext(AuthContext);
   const [menuState, setMenuState] = useState(false);
   const navigate = useNavigate();
 
@@ -14,8 +17,24 @@ function Layout({ children, showBackButton, backPage, showHowItWorks }) {
   };
 
   const logout = () => {
-    navigate("/");
-    closeMenu();
+    confirmAlert({
+      title: "Logout",
+      message: "Are you sure you want to logout?",
+      buttons: [
+        {
+          label: "Yes",
+          onClick: () => {
+            setAuth(null);
+            closeMenu();
+            navigate("/");
+          },
+        },
+        {
+          label: "No",
+          onClick: () => null,
+        },
+      ],
+    });
   };
 
   const goBack = () => {
@@ -44,7 +63,7 @@ function Layout({ children, showBackButton, backPage, showHowItWorks }) {
         <span>
           <strong>User:</strong>
         </span>
-        <address>flesland@sixt.no</address>
+        <address>{auth ? auth.user.username : null}</address>
         <button onClick={logout} className="btn-menu__mobile">
           Logout
         </button>
@@ -63,7 +82,7 @@ function Layout({ children, showBackButton, backPage, showHowItWorks }) {
         <span>
           <strong>User:</strong>
         </span>
-        <address>flesland@sixt.no</address>
+        <address>{auth ? auth.user.username : null}</address>
         <button onClick={logout} className="btn-menu">
           Logout
         </button>
