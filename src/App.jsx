@@ -23,7 +23,6 @@ const App = () => {
           <Route path="/" element={<Login />} />
           <Route path="/howitworks" element={<HowItWorks />} />
           <Route path="/forms" element={<Forms />} />
-          <Route path="/form" element={<Form />} />
           {["/form", "/form/:formName"].map((path, index) => {
             return <Route path={path} element={<Form />} key={index} />;
           })}

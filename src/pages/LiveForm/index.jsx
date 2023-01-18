@@ -1,4 +1,5 @@
-import { useParams } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 
 import Container from "components/Container";
 import Header from "components/Header";
@@ -9,6 +10,13 @@ import DriverInformation3 from "components/forms/DriverInformation3";
 
 function LiveForm() {
   const { formName } = useParams();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!formName) {
+      navigate("/forms");
+    }
+  }, []);
 
   return (
     <Container>

@@ -17,6 +17,9 @@ function Form() {
     if (!auth) {
       navigate("/");
     }
+    if (!formName) {
+      navigate("/forms");
+    }
   }, []);
 
   return (

@@ -19,6 +19,9 @@ function Answers() {
     if (!auth) {
       navigate("/");
     }
+    if (!formName) {
+      navigate("/forms");
+    }
   }, []);
 
   return (

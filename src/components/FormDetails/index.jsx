@@ -11,24 +11,24 @@ function FormDetails() {
   const onClickLiveForm = () => {
     if (formName === "sola1") {
       navigate("/liveForm/sola1");
-    }
-    if (formName === "sola2") {
+    } else if (formName === "sola2") {
       navigate("/liveForm/sola2");
-    }
-    if (formName === "sola3") {
+    } else if (formName === "sola3") {
       navigate("/liveForm/sola3");
+    } else if (!formName) {
+      navigate("/forms");
     }
   };
 
   const onClickAnswers = () => {
     if (formName === "sola1") {
       navigate("/answers/sola1");
-    }
-    if (formName === "sola2") {
+    } else if (formName === "sola2") {
       navigate("/answers/sola2");
-    }
-    if (formName === "sola3") {
+    } else if (formName === "sola3") {
       navigate("/answers/sola3");
+    } else if (!formName) {
+      navigate("/forms");
     }
   };
 
