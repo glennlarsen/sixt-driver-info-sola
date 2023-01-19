@@ -31,7 +31,7 @@
     "react-responsive": "^9.0.2",
     "react-router-dom": "^6.4.3",
     "react-scripts": "5.0.1",
-    "react-scroll-into-view": "^1.12.0",
+    "react-scroll": "^1.8.9",
     "react-select-country-list": "^2.2.3",
     "stream-http": "^3.2.0",
     "url": "^0.11.0",

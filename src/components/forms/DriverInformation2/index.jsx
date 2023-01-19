@@ -5,7 +5,6 @@ import Box from "@mui/material/Box";
 import DoneIcon from "@mui/icons-material/Done";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useSpring, animated } from "@react-spring/web";
-import ScrollIntoView from "react-scroll-into-view";
 
 import schema from "constants/schema";
 import SendDriverInfo2 from "utils/SendDriverInfo2";
@@ -18,6 +17,7 @@ import CityInput from "components/common/CityInput";
 import EmailInput from "components/common/EmailInput";
 import { content } from "constants/DriverFormContent";
 import { LangContext } from "utils/LangContext";
+import ScrollTo from "components/common/ScrollTo";
 
 function DriverInformation2() {
   const [submitted, setSubmitted] = useState(false);
@@ -102,33 +102,40 @@ function DriverInformation2() {
       autoComplete="off"
       onSubmit={handleSubmit(onSubmit)}
     >
-      <ScrollIntoView selector="#country" smooth>
-        <CountryInput
-          control={control}
+      <CountryInput
+        control={control}
+        errors={errors}
+        defaultValue=""
+        onCountrySelect={setDefaultCallingCode}
+      />
+      <StreetInput
+        register={register}
+        errors={errors}
+        onClick={() => ScrollTo("street")}
+      />
+      <Box gap={2} display="flex">
+        <PostalInput
+          register={register}
           errors={errors}
-          defaultValue=""
-          onCountrySelect={setDefaultCallingCode}
+          onClick={() => ScrollTo("postal")}
         />
-      </ScrollIntoView>
-      <ScrollIntoView selector="#street" smooth>
-        <StreetInput register={register} errors={errors} />
-      </ScrollIntoView>
-      <ScrollIntoView selector="#postal" smooth>
-        <Box gap={2} display="flex">
-          <PostalInput register={register} errors={errors} />
-          <CityInput register={register} errors={errors} />
-        </Box>
-      </ScrollIntoView>
-      <ScrollIntoView selector="#phone" smooth>
-        <PhoneInput
-          control={control}
+        <CityInput
+          register={register}
           errors={errors}
-          defaultValue={defaultCallingCode}
+          onClick={() => ScrollTo("city")}
         />
-      </ScrollIntoView>
-      <ScrollIntoView selector="#email" smooth>
-        <EmailInput register={register} errors={errors} />
-      </ScrollIntoView>
+      </Box>
+      <PhoneInput
+        control={control}
+        errors={errors}
+        defaultValue={defaultCallingCode}
+        onClick={() => ScrollTo("tel")}
+      />
+      <EmailInput
+        register={register}
+        errors={errors}
+        onClick={() => ScrollTo("email")}
+      />
       <button type="submit">{content[lang]["submit"]}</button>
       <span onClick={() => onReset()} className="btn-reset">
         {content[lang]["reset"]}

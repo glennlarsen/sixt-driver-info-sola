@@ -16,7 +16,7 @@ const MuiTelInputStyled = styled(MuiTelInput)({
   },
 });
 
-const PhoneInput = ({ control, errors, defaultValue }) => {
+const PhoneInput = ({ control, errors, defaultValue, onClick }) => {
   const [lang] = useContext(LangContext);
 
   return (
@@ -29,7 +29,8 @@ const PhoneInput = ({ control, errors, defaultValue }) => {
           {...field}
           defaultCountry={defaultValue}
           forceCallingCode
-          id="phone"
+          id="tel"
+          onClick={onClick}
           fullWidth
           focusOnSelectCountry
           preferredCountries={[

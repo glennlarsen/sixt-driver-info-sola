@@ -5,7 +5,7 @@ import ErrorRoundedIcon from "@mui/icons-material/ErrorRounded";
 import { content } from "constants/DriverFormContent";
 import { LangContext } from "utils/LangContext";
 
-const EmailInput = ({ register, errors }) => {
+const EmailInput = ({ register, errors, onClick }) => {
   const [lang] = useContext(LangContext);
 
   return (
@@ -15,6 +15,7 @@ const EmailInput = ({ register, errors }) => {
       type="email"
       id="email"
       fullWidth
+      onClick={onClick}
       inputProps={{
         autoComplete: "chrome-off",
       }}

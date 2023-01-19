@@ -5,7 +5,7 @@ import ErrorRoundedIcon from "@mui/icons-material/ErrorRounded";
 import { content } from "constants/DriverFormContent";
 import { LangContext } from "utils/LangContext";
 
-const CityInput = ({ register, errors }) => {
+const CityInput = ({ register, errors, onClick }) => {
   const [lang] = useContext(LangContext);
 
   return (
@@ -14,6 +14,8 @@ const CityInput = ({ register, errors }) => {
       label={content[lang]["city"]}
       type="text"
       id="city"
+      name="city"
+      onClick={onClick}
       fullWidth
       {...register("city")}
       error={Boolean(errors.city)}
