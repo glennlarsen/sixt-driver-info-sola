@@ -52,7 +52,7 @@ const CountryInput = ({ control, errors, defaultValue, onCountrySelect }) => {
               {...params}
               label={content[lang]["country"]}
               variant="standard"
-              placeholder="Start typing.."
+              placeholder={content[lang]["countryplaceholder"]}
               error={Boolean(errors.country)}
               helperText={errors.country ? errors.country.message : ""}
               inputProps={{

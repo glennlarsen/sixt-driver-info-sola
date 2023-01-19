@@ -2,6 +2,7 @@ export const content = {
     en: {
         heading: "Driver Information",
         country: "Your Home Country",
+        countryplaceholder: "Start typing..",
         street: "Street",
         streetplaceholder: "Home address...",
         postal: "Postal Code",
@@ -18,6 +19,7 @@ export const content = {
     es: {
         heading: "Información del Conductor",
         country: "Tu país de origen",
+        countryplaceholder: "empieza a escribir..",
         street: "Calle",
         streetplaceholder: "Direccion de casa...",
         postal: "Código postal",
@@ -34,6 +36,7 @@ export const content = {
     fr: {
         heading: "Informations sur le conducteur",
         country: "Votre pays d'origine",
+        countryplaceholder: "commencer à écrire..",
         street: "Rue",
         streetplaceholder: "Adresse du domicile...",
         postal: "code postal",
@@ -50,6 +53,7 @@ export const content = {
     de: {
         heading: "Fahrerinformationen",
         country: "Ihr Heimatland",
+        countryplaceholder: "beginne zu tippen..",
         street: "Straße",
         streetplaceholder: "Heimatadresse...",
         postal: "Postleitzahl",
@@ -66,6 +70,7 @@ export const content = {
     no: {
         heading: "Førerinformasjon",
         country: "Land",
+        countryplaceholder: "Begynn å skrive..",
         street: "Gate",
         streetplaceholder: "Hjemme adresse...",
         postal: "Postnummer",
