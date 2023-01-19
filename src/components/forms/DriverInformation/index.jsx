@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useForm } from "react-hook-form";
 
 import Box from "@mui/material/Box";
@@ -15,12 +15,15 @@ import StreetInput from "components/common/StreetInput";
 import PostalInput from "components/common/PostalInput";
 import CityInput from "components/common/CityInput";
 import EmailInput from "components/common/EmailInput";
+import { content } from "constants/DriverFormContent";
+import { LangContext } from "utils/LangContext";
 
 const DriverInformation = () => {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [defaultCallingCode, setDefaultCallingCode] = useState("NO");
+  const [lang] = useContext(LangContext);
 
   const {
     register,
@@ -75,7 +78,7 @@ const DriverInformation = () => {
           <animated.div style={opacity}>
             <DoneIcon sx={{ fontSize: 100, color: "#FF5F00" }} />
           </animated.div>
-          Thank you! Enjoy your SIXT Experience.
+          {content[lang]["confirmation"]}
         </div>
       </animated.div>
     );
@@ -92,34 +95,36 @@ const DriverInformation = () => {
   }
 
   return (
-    <Box
-      component="form"
-      noValidate
-      autoComplete="off"
-      onSubmit={handleSubmit(onSubmit)}
-    >
-      <CountryInput
-        control={control}
-        errors={errors}
-        defaultValue=""
-        onCountrySelect={setDefaultCallingCode}
-      />
-      <StreetInput register={register} errors={errors} />
-      <Box gap={2} display="flex">
-        <PostalInput register={register} errors={errors} />
-        <CityInput register={register} errors={errors} />
+    <>
+      <Box
+        component="form"
+        noValidate
+        autoComplete="off"
+        onSubmit={handleSubmit(onSubmit)}
+      >
+        <CountryInput
+          control={control}
+          errors={errors}
+          defaultValue=""
+          onCountrySelect={setDefaultCallingCode}
+        />
+        <StreetInput register={register} errors={errors} />
+        <Box gap={2} display="flex">
+          <PostalInput register={register} errors={errors} />
+          <CityInput register={register} errors={errors} />
+        </Box>
+        <PhoneInput
+          control={control}
+          errors={errors}
+          defaultValue={defaultCallingCode}
+        />
+        <EmailInput register={register} errors={errors} />
+        <button type="submit">{content[lang]["submit"]}</button>
+        <span onClick={() => onReset()} className="btn-reset">
+          {content[lang]["reset"]}
+        </span>
       </Box>
-      <PhoneInput
-        control={control}
-        errors={errors}
-        defaultValue={defaultCallingCode}
-      />
-      <EmailInput register={register} errors={errors} />
-      <button type="submit">Submit</button>
-      <span onClick={() => onReset()} className="btn-reset">
-        Reset fields
-      </span>
-    </Box>
+    </>
   );
 };
 

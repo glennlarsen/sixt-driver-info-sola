@@ -1,12 +1,17 @@
+import { useContext } from "react";
 import FormTextField from "../FormTextField";
 import InputAdornment from "@mui/material/InputAdornment";
 import ErrorRoundedIcon from "@mui/icons-material/ErrorRounded";
+import { content } from "constants/DriverFormContent";
+import { LangContext } from "utils/LangContext";
 
 const CityInput = ({ register, errors }) => {
+  const [lang] = useContext(LangContext);
+
   return (
     <FormTextField
       variant="standard"
-      label="City"
+      label={content[lang]["city"]}
       type="text"
       fullWidth
       {...register("city")}

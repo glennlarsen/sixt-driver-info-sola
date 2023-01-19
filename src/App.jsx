@@ -8,6 +8,7 @@ import LiveForm from "pages/LiveForm";
 import Login from "pages/Login";
 import HowItWorks from "pages/HowItWorks";
 import { AuthProvider } from "utils/AuthContext";
+import { LangProvider } from "utils/LangContext";
 
 const App = () => {
   //Keeps Heroku Dynos awake 24/7
@@ -18,6 +19,7 @@ const App = () => {
 
   return (
     <AuthProvider>
+      <LangProvider>
       <Router>
         <Routes>
           <Route path="/" element={<Login />} />
@@ -34,6 +36,7 @@ const App = () => {
           })}
         </Routes>
       </Router>
+      </LangProvider>
     </AuthProvider>
   );
 };

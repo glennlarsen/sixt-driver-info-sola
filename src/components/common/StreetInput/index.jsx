@@ -1,14 +1,19 @@
+import { useContext } from "react";
 import FormTextField from "../FormTextField";
 import InputAdornment from "@mui/material/InputAdornment";
 import ErrorRoundedIcon from "@mui/icons-material/ErrorRounded";
+import { content } from "constants/DriverFormContent";
+import { LangContext } from "utils/LangContext";
 
 const StreetInput = ({ register, errors }) => {
+  const [lang] = useContext(LangContext);
+
   return (
     <FormTextField
       variant="standard"
-      label="Street"
+      label={content[lang]["street"]}
       type="text"
-      placeholder="Home address..."
+      placeholder={content[lang]["streetplaceholder"]}
       {...register("street")}
       error={Boolean(errors.street)}
       autoComplete="off"

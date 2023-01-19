@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { MuiTelInput } from "mui-tel-input";
 import { styled } from "@mui/material/styles";
 import { Controller } from "react-hook-form";
 import InputAdornment from "@mui/material/InputAdornment";
 import ErrorRoundedIcon from "@mui/icons-material/ErrorRounded";
+import { content } from "constants/DriverFormContent";
+import { LangContext } from "utils/LangContext";
 
 const MuiTelInputStyled = styled(MuiTelInput)({
   "& label.Mui-focused": {
@@ -15,6 +17,8 @@ const MuiTelInputStyled = styled(MuiTelInput)({
 });
 
 const PhoneInput = ({ control, errors, defaultValue }) => {
+  const [lang] = useContext(LangContext);
+
   return (
     <Controller
       name="tel"
@@ -41,9 +45,9 @@ const PhoneInput = ({ control, errors, defaultValue }) => {
             "PL",
           ]}
           variant="standard"
-          label="Phone Number"
+          label={content[lang]["phone"]}
           error={Boolean(errors.tel)}
-          helperText={errors.tel ? errors.tel.message : ""}
+          helperText={errors.tel ? content[lang]["phoneerror"] : ""}
           InputProps={
             errors.tel
               ? {

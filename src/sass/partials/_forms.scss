@@ -155,3 +155,21 @@ form {
     margin-left: 3em !important;
   }
 }
+
+.language-selector {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  right: 5%;
+  top: 3%;
+
+  label {
+    font-weight: bold;
+  }
+}
+
+.language-flags {
+  width: 40px;
+  margin-right: 10px;
+  cursor: pointer;
+}

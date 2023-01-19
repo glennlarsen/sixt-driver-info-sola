@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
 import Container from "components/Container";
@@ -7,10 +7,14 @@ import Head from "components/Head";
 import DriverInformation from "components/forms/DriverInformation";
 import DriverInformation2 from "components/forms/DriverInformation2";
 import DriverInformation3 from "components/forms/DriverInformation3";
+import { content } from "constants/DriverFormContent";
+import { LangContext } from "utils/LangContext";
+import LanguageSelector from "components/common/LanguageSelector";
 
 function LiveForm() {
   const { formName } = useParams();
   const navigate = useNavigate();
+  const [lang] = useContext(LangContext);
 
   useEffect(() => {
     if (!formName) {
@@ -24,7 +28,8 @@ function LiveForm() {
         page="Liveform"
         description="Driver information form for clients to fill"
       />
-      <Header title="Driver Information" info={formName} />
+      <LanguageSelector />
+      <Header title={content[lang]["heading"]} info={formName} />
       {formName === "sola1" && <DriverInformation />}
       {formName === "sola2" && <DriverInformation2 />}
       {formName === "sola3" && <DriverInformation3 />}

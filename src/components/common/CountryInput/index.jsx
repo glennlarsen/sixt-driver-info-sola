@@ -1,10 +1,15 @@
+import { useContext } from "react";
 import FormTextField from "../FormTextField";
 import Box from "@mui/material/Box";
 import Autocomplete from "@mui/material/Autocomplete";
 import countries from "constants/countries";
 import { Controller } from "react-hook-form";
+import { content } from "constants/DriverFormContent";
+import { LangContext } from "utils/LangContext";
 
 const CountryInput = ({ control, errors, defaultValue, onCountrySelect }) => {
+  const [ lang ] = useContext(LangContext);
+
   return (
     <Controller
       control={control}
@@ -44,7 +49,7 @@ const CountryInput = ({ control, errors, defaultValue, onCountrySelect }) => {
           renderInput={(params) => (
             <FormTextField
               {...params}
-              label="You home country"
+              label={ content[lang]["country"] }
               variant="standard"
               error={Boolean(errors.country)}
               helperText={errors.country ? errors.country.message : ""}
