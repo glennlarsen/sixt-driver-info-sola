@@ -8,7 +8,7 @@ import { content } from "constants/DriverFormContent";
 import { LangContext } from "utils/LangContext";
 
 const CountryInput = ({ control, errors, defaultValue, onCountrySelect }) => {
-  const [ lang ] = useContext(LangContext);
+  const [lang] = useContext(LangContext);
 
   return (
     <Controller
@@ -50,7 +50,7 @@ const CountryInput = ({ control, errors, defaultValue, onCountrySelect }) => {
           renderInput={(params) => (
             <FormTextField
               {...params}
-              label={ content[lang]["country"] }
+              label={content[lang]["country"]}
               variant="standard"
               placeholder="Start typing.."
               error={Boolean(errors.country)}

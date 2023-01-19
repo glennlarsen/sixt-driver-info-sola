@@ -41,8 +41,6 @@ function Layout({ children, showBackButton, backPage, showHowItWorks }) {
     });
   };
 
-  
-
   const goBack = () => {
     navigate(backPage ? `/${backPage}` : -1);
     closeMenu();
@@ -50,7 +48,12 @@ function Layout({ children, showBackButton, backPage, showHowItWorks }) {
 
   return (
     <div className="main-layout">
-      <Menu width={310} right isOpen={menuState} onStateChange={handleStateChange}>
+      <Menu
+        width={310}
+        right
+        isOpen={menuState}
+        onStateChange={handleStateChange}
+      >
         <h2>Menu</h2>
         <Tooltip title="Go back">
           <ArrowBackIcon

@@ -96,7 +96,6 @@ const DriverInformation = () => {
   }
 
   return (
-    <>
       <Box
         component="form"
         noValidate
@@ -142,7 +141,6 @@ const DriverInformation = () => {
           {content[lang]["reset"]}
         </span>
       </Box>
-    </>
   );
 };
 
