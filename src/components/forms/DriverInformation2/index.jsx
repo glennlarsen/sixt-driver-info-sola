@@ -72,6 +72,22 @@ function DriverInformation2() {
     config: { duration: 900 },
   });
 
+  if (/Android/.test(navigator.appVersion)) {
+    window.addEventListener("resize", function () {
+      if (
+        document.activeElement.tagName == "INPUT" ||
+        document.activeElement.tagName == "TEXTAREA"
+      ) {
+        window.setTimeout(function () {
+          document.activeElement.scrollIntoView({
+            behavior: "auto",
+            block: "center",
+          });
+        }, 0);
+      }
+    });
+  }
+
   if (loading && submitted) {
     return (
       <animated.div style={slide}>
