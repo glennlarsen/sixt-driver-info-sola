@@ -13,6 +13,7 @@ const CityInput = ({ register, errors }) => {
       variant="standard"
       label={content[lang]["city"]}
       type="text"
+      id="city"
       fullWidth
       {...register("city")}
       error={Boolean(errors.city)}

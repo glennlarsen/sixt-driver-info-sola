@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useForm } from "react-hook-form";
 
 import Box from "@mui/material/Box";
 import DoneIcon from "@mui/icons-material/Done";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useSpring, animated } from "@react-spring/web";
+import ScrollIntoView from "react-scroll-into-view";
 
 import schema from "constants/schema";
 import SendDriverInfo2 from "utils/SendDriverInfo2";
@@ -15,12 +16,15 @@ import StreetInput from "components/common/StreetInput";
 import PostalInput from "components/common/PostalInput";
 import CityInput from "components/common/CityInput";
 import EmailInput from "components/common/EmailInput";
+import { content } from "constants/DriverFormContent";
+import { LangContext } from "utils/LangContext";
 
 function DriverInformation2() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [defaultCallingCode, setDefaultCallingCode] = useState("NO");
+  const [lang] = useContext(LangContext);
 
   const {
     register,
@@ -75,7 +79,7 @@ function DriverInformation2() {
           <animated.div style={opacity}>
             <DoneIcon sx={{ fontSize: 100, color: "#FF5F00" }} />
           </animated.div>
-          Thank you! Enjoy your SIXT Experience.
+          {content[lang]["confirmation"]}
         </div>
       </animated.div>
     );
@@ -98,26 +102,36 @@ function DriverInformation2() {
       autoComplete="off"
       onSubmit={handleSubmit(onSubmit)}
     >
-      <CountryInput
-        control={control}
-        errors={errors}
-        defaultValue=""
-        onCountrySelect={setDefaultCallingCode}
-      />
-      <StreetInput register={register} errors={errors} />
-      <Box gap={2} display="flex">
-        <PostalInput register={register} errors={errors} />
-        <CityInput register={register} errors={errors} />
-      </Box>
-      <PhoneInput
-        control={control}
-        errors={errors}
-        defaultValue={defaultCallingCode}
-      />
-      <EmailInput register={register} errors={errors} />
-      <button type="submit">Submit</button>
+      <ScrollIntoView selector="#country" smooth>
+        <CountryInput
+          control={control}
+          errors={errors}
+          defaultValue=""
+          onCountrySelect={setDefaultCallingCode}
+        />
+      </ScrollIntoView>
+      <ScrollIntoView selector="#street" smooth>
+        <StreetInput register={register} errors={errors} />
+      </ScrollIntoView>
+      <ScrollIntoView selector="#postal" smooth>
+        <Box gap={2} display="flex">
+          <PostalInput register={register} errors={errors} />
+          <CityInput register={register} errors={errors} />
+        </Box>
+      </ScrollIntoView>
+      <ScrollIntoView selector="#phone" smooth>
+        <PhoneInput
+          control={control}
+          errors={errors}
+          defaultValue={defaultCallingCode}
+        />
+      </ScrollIntoView>
+      <ScrollIntoView selector="#email" smooth>
+        <EmailInput register={register} errors={errors} />
+      </ScrollIntoView>
+      <button type="submit">{content[lang]["submit"]}</button>
       <span onClick={() => onReset()} className="btn-reset">
-        Reset fields
+        {content[lang]["reset"]}
       </span>
     </Box>
   );

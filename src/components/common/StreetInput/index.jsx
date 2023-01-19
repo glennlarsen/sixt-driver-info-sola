@@ -13,6 +13,8 @@ const StreetInput = ({ register, errors }) => {
       variant="standard"
       label={content[lang]["street"]}
       type="text"
+      id="street"
+      fullWidth
       placeholder={content[lang]["streetplaceholder"]}
       {...register("street")}
       error={Boolean(errors.street)}

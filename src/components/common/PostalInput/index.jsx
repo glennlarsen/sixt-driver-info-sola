@@ -13,6 +13,7 @@ const PostalInput = ({ register, errors }) => {
       variant="standard"
       label={content[lang]["postal"]}
       type="text"
+      id="postal"
       {...register("postal")}
       error={Boolean(errors.postal)}
       helperText={errors.postal ? errors.postal.message : ""}

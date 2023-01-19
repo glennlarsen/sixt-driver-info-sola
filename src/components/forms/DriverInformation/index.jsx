@@ -5,6 +5,7 @@ import Box from "@mui/material/Box";
 import DoneIcon from "@mui/icons-material/Done";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useSpring, animated } from "@react-spring/web";
+import ScrollIntoView from 'react-scroll-into-view'
 
 import schema from "constants/schema";
 import SendDriverInfo from "utils/SendDriverInfo";
@@ -102,23 +103,33 @@ const DriverInformation = () => {
         autoComplete="off"
         onSubmit={handleSubmit(onSubmit)}
       >
+        <ScrollIntoView selector="#country" smooth>
         <CountryInput
           control={control}
           errors={errors}
           defaultValue=""
           onCountrySelect={setDefaultCallingCode}
         />
+        </ScrollIntoView>
+        <ScrollIntoView selector="#street" smooth>
         <StreetInput register={register} errors={errors} />
+        </ScrollIntoView>
+        <ScrollIntoView selector="#postal" smooth>
         <Box gap={2} display="flex">
           <PostalInput register={register} errors={errors} />
           <CityInput register={register} errors={errors} />
         </Box>
+        </ScrollIntoView>
+        <ScrollIntoView selector="#phone" smooth>
         <PhoneInput
           control={control}
           errors={errors}
           defaultValue={defaultCallingCode}
         />
+        </ScrollIntoView>
+        <ScrollIntoView selector="#email" smooth>
         <EmailInput register={register} errors={errors} />
+        </ScrollIntoView>
         <button type="submit">{content[lang]["submit"]}</button>
         <span onClick={() => onReset()} className="btn-reset">
           {content[lang]["reset"]}

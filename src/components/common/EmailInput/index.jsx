@@ -13,6 +13,8 @@ const EmailInput = ({ register, errors }) => {
       variant="standard"
       label={content[lang]["email"]}
       type="email"
+      id="email"
+      fullWidth
       inputProps={{
         autoComplete: "chrome-off",
       }}

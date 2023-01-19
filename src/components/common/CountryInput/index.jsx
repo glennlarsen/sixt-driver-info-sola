@@ -14,6 +14,7 @@ const CountryInput = ({ control, errors, defaultValue, onCountrySelect }) => {
     <Controller
       control={control}
       name="country"
+      id="country"
       defaultValue={defaultValue}
       render={({ field: { onChange, value } }) => (
         <Autocomplete

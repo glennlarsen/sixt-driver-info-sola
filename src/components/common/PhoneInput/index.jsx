@@ -29,6 +29,8 @@ const PhoneInput = ({ control, errors, defaultValue }) => {
           {...field}
           defaultCountry={defaultValue}
           forceCallingCode
+          id="phone"
+          fullWidth
           focusOnSelectCountry
           preferredCountries={[
             "NO",
