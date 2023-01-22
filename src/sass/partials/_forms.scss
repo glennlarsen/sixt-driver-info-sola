@@ -2,8 +2,13 @@ form {
   display: flex;
   flex-direction: column;
   gap: 1.5em;
-  max-width: 500px;
-  margin: 0 auto;
+  max-width: 600px;
+  margin-right: auto;
+  flex: 1;
+}
+
+.login-form {
+  margin-right: 0 !important;
 }
 
 .box {
@@ -51,11 +56,6 @@ form {
     color: $color-primary !important;
     cursor: pointer;
   }
-}
-
-.answers-form {
-  max-width: 100%;
-  flex: 3;
 }
 
 .copy-alert {

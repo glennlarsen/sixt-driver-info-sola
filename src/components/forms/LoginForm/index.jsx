@@ -16,6 +16,7 @@ import ErrorRoundedIcon from "@mui/icons-material/ErrorRounded";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import IconButton from "@mui/material/IconButton";
+import Header from "components/Header";
 
 const FormTextField = styled(TextField)({
   "& label.Mui-focused": {
@@ -28,7 +29,7 @@ const FormTextField = styled(TextField)({
 
 const url = AUTH_URL;
 
-const LoginForm = () => {
+const LoginForm = ({ title }) => {
   const [submitting, setSubmitting] = useState(false);
   const [loginError, setLoginError] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
@@ -70,7 +71,9 @@ const LoginForm = () => {
       noValidate
       autoComplete="off"
       onSubmit={handleSubmit(onSubmit)}
+      className="login-form"
     >
+      <Header title={title} />
       {loginError && (
         <AlertMessage variant="error" title="Error" message={loginError} />
       )}

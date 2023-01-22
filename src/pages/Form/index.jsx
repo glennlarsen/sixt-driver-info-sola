@@ -3,7 +3,6 @@ import { useParams, useNavigate } from "react-router-dom";
 import AuthContext from "utils/AuthContext";
 
 import Container from "components/Container";
-import Header from "components/Header";
 import Head from "components/Head";
 import Layout from "components/Layout";
 import FormDetails from "components/FormDetails";
@@ -28,9 +27,8 @@ function Form() {
         page="Form"
         description="Choose what action you want to perform on this form"
       />
-      <Header title={formName} flex={2} />
-      <Layout backPage="forms">
-        <FormDetails />
+      <Layout backPage="forms" info={formName}>
+        <FormDetails title={formName} />
       </Layout>
     </Container>
   );

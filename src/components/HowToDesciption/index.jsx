@@ -9,10 +9,12 @@ import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
 import PlaylistAddCheckIcon from "@mui/icons-material/PlaylistAddCheck";
 import DoneAllIcon from "@mui/icons-material/DoneAll";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+import Header from "components/Header";
 
-function HowToDesciption() {
+function HowToDesciption({title}) {
   return (
     <Box sx={{ width: "100%" }}>
+      <Header title={title} />
       <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
         <Grid xs={6}>
           <Paper className="box-how">

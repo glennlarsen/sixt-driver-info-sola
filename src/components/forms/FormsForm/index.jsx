@@ -3,8 +3,9 @@ import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 
 import { useNavigate } from "react-router-dom";
+import Header from "components/Header";
 
-const FormsForm = () => {
+const FormsForm = ({title}) => {
   const navigate = useNavigate();
 
   const clickForm1 = () => {
@@ -17,6 +18,7 @@ const FormsForm = () => {
 
   return (
     <Box sx={{ width: "100%" }}>
+      <Header title={title} />
       <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
         <Grid xs={6}>
           <Paper onClick={clickForm1} className="box">

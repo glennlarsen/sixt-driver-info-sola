@@ -20,6 +20,7 @@ import Alert from "@mui/material/Alert";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CloseIcon from "@mui/icons-material/Close";
 import Collapse from "@mui/material/Collapse";
+import Header from "components/Header";
 
 const theme = createTheme({
   status: {
@@ -46,7 +47,7 @@ const FormTextField = styled(TextField)({
   },
 });
 
-function AnswersForm3() {
+function AnswersForm3({title}) {
   const navigate = useNavigate();
   const [copySuccess, setCopySuccess] = useState("");
   const [deleted, setDeleted] = useState(false);
@@ -169,6 +170,7 @@ function AnswersForm3() {
     return (
       <ThemeProvider theme={theme}>
         <Box className="answers-form">
+        <Header title={title} />
           <div className="no-answers">
             No Answers Yet. Find a customer that can fill your Live Form! Click
             Refresh if the result don't show automatically.
@@ -210,6 +212,7 @@ function AnswersForm3() {
                 autoComplete="off"
                 className="answers-form"
               >
+                  <Header title={title} />
                 <span className="last-received">
                   <strong>Last Answer: </strong>
                   {answers ? (

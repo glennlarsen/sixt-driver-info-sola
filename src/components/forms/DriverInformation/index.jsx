@@ -18,8 +18,9 @@ import EmailInput from "components/common/EmailInput";
 import { content } from "constants/DriverFormContent";
 import { LangContext } from "utils/LangContext";
 import ScrollTo from "components/common/ScrollTo";
+import Header from "components/Header";
 
-const DriverInformation = () => {
+const DriverInformation = ({ title, confirmation }) => {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -79,7 +80,7 @@ const DriverInformation = () => {
           <animated.div style={opacity}>
             <DoneIcon sx={{ fontSize: 100, color: "#FF5F00" }} />
           </animated.div>
-          {content[lang]["confirmation"]}
+          {confirmation}
         </div>
       </animated.div>
     );
@@ -96,51 +97,52 @@ const DriverInformation = () => {
   }
 
   return (
-      <Box
-        component="form"
-        noValidate
-        autoComplete="off"
-        onSubmit={handleSubmit(onSubmit)}
-      >
-        <CountryInput
-          control={control}
-          errors={errors}
-          defaultValue=""
-          onCountrySelect={setDefaultCallingCode}
-        />
-        <StreetInput
+    <Box
+      component="form"
+      noValidate
+      autoComplete="off"
+      onSubmit={handleSubmit(onSubmit)}
+    >
+      <Header title={title} />
+      <CountryInput
+        control={control}
+        errors={errors}
+        defaultValue=""
+        onCountrySelect={setDefaultCallingCode}
+      />
+      <StreetInput
+        register={register}
+        errors={errors}
+        onClick={() => ScrollTo("street")}
+      />
+      <Box gap={2} display="flex">
+        <PostalInput
           register={register}
           errors={errors}
-          onClick={() => ScrollTo("street")}
+          onClick={() => ScrollTo("postal")}
         />
-        <Box gap={2} display="flex">
-          <PostalInput
-            register={register}
-            errors={errors}
-            onClick={() => ScrollTo("postal")}
-          />
-          <CityInput
-            register={register}
-            errors={errors}
-            onClick={() => ScrollTo("city")}
-          />
-        </Box>
-        <PhoneInput
-          control={control}
-          errors={errors}
-          defaultValue={defaultCallingCode}
-          onClick={() => ScrollTo("tel")}
-        />
-        <EmailInput
+        <CityInput
           register={register}
           errors={errors}
-          onClick={() => ScrollTo("email")}
+          onClick={() => ScrollTo("city")}
         />
-        <button type="submit">{content[lang]["submit"]}</button>
-        <span onClick={() => onReset()} className="btn-reset">
-          {content[lang]["reset"]}
-        </span>
       </Box>
+      <PhoneInput
+        control={control}
+        errors={errors}
+        defaultValue={defaultCallingCode}
+        onClick={() => ScrollTo("tel")}
+      />
+      <EmailInput
+        register={register}
+        errors={errors}
+        onClick={() => ScrollTo("email")}
+      />
+      <button type="submit">{content[lang]["submit"]}</button>
+      <span onClick={() => onReset()} className="btn-reset">
+        {content[lang]["reset"]}
+      </span>
+    </Box>
   );
 };
 

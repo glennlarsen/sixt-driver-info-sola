@@ -12,7 +12,7 @@
 header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 
   h1 {
     max-width: 600px;
@@ -38,15 +38,11 @@ header {
 }
 
 .logo {
-  flex: 1;
+  margin-bottom: 1em;
 
   img {
     width: 130px;
   }
-}
-
-.emtpy-header {
-  flex: 1;
 }
 
 .main-layout {
@@ -54,23 +50,16 @@ header {
   gap: 2em;
 
   .desktop-nav {
-    flex: 1;
     display: none;
+    padding: 2em 0;
+    margin-left: auto;
+    margin-right: 2em;
 
-    @media only screen and (min-width: 500px) {
+    @media only screen and (min-width: 600px) {
       display: flex;
       flex-direction: column;
+      min-width: fit-content;
     }
-  }
-
-  & > div:first-of-type {
-    @media only screen and (min-width: 500px) {
-      display: none;
-    }
-  }
-
-  & > div {
-    flex: 3;
   }
 
   & > div {
@@ -81,16 +70,9 @@ header {
   a {
     text-decoration: none;
     cursor: pointer;
-    color: $color-primary;
     font-weight: bold;
-    margin-bottom: 1em;
     transition: 0.2s;
     width: fit-content;
-
-    &:hover {
-      color: $color-hover;
-      text-decoration: underline;
-    }
   }
 
   @media only screen and (max-width: 500px) {

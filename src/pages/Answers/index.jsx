@@ -30,11 +30,10 @@ function Answers() {
         page="Answers"
         description="Showing answers that the client provides to the form"
       />
-      <Header title="Answers" flex={2} info={formName} />
-      <Layout backPage={`form/${formName}`}>
-        {formName === "sola1" && <AnswersForm />}
-        {formName === "sola2" && <AnswersForm2 />}
-        {formName === "sola3" && <AnswersForm3 />}
+      <Layout backPage={`form/${formName}`} info={formName}>
+        {formName === "sola1" && <AnswersForm title="Answers" />}
+        {formName === "sola2" && <AnswersForm2 title="Answers" />}
+        {formName === "sola3" && <AnswersForm3 title="Answers" />}
       </Layout>
     </Container>
   );

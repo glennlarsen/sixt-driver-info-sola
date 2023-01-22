@@ -1,10 +1,11 @@
 import Grid from "@mui/material/Unstable_Grid2";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
+import Header from "components/Header";
 
 import { useNavigate, useParams } from "react-router-dom";
 
-function FormDetails() {
+function FormDetails({title}) {
   const navigate = useNavigate();
   const { formName } = useParams();
 
@@ -34,6 +35,7 @@ function FormDetails() {
 
   return (
     <Box sx={{ width: "100%" }}>
+      <Header title={title} />
       <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
         <Grid xs={6}>
           <Paper onClick={onClickLiveForm} className="box">

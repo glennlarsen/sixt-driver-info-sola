@@ -11,11 +11,11 @@ export const Tablet = ({ children }) => {
 };
 
 export const TabletAndDesktop = ({ children }) => {
-  const isTablet = useMediaQuery({ minWidth: 830 });
+  const isTablet = useMediaQuery({ minWidth: 600 });
   return isTablet ? children : null;
 };
 
 export const Mobile = ({ children }) => {
-  const isMobile = useMediaQuery({ maxWidth: 829 });
+  const isMobile = useMediaQuery({ maxWidth: 599 });
   return isMobile ? children : null;
 };

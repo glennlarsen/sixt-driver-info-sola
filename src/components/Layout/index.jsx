@@ -1,13 +1,21 @@
 import React, { useState, useContext } from "react";
-import { useNavigate, NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { stack as Menu } from "react-burger-menu";
 import { confirmAlert } from "react-confirm-alert";
 import AuthContext from "utils/AuthContext";
 
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import Tooltip from "@mui/material/Tooltip";
+import Header from "components/Header";
+import SideBarMenu from "components/common/SideBarMenu";
 
-function Layout({ children, showBackButton, backPage, showHowItWorks }) {
+function Layout({
+  children,
+  showBackButton,
+  backPage,
+  showHowItWorks,
+  title,
+  info,
+  showSideBar,
+}) {
   const [auth, setAuth] = useContext(AuthContext);
   const [menuState, setMenuState] = useState(false);
   const navigate = useNavigate();
@@ -48,54 +56,40 @@ function Layout({ children, showBackButton, backPage, showHowItWorks }) {
 
   return (
     <div className="main-layout">
-      <Menu
-        width={310}
-        right
-        isOpen={menuState}
-        onStateChange={handleStateChange}
-      >
-        <h2>Menu</h2>
-        <Tooltip title="Go back">
-          <ArrowBackIcon
-            className="btn-back"
-            onClick={goBack}
-            style={{ display: showBackButton }}
-          ></ArrowBackIcon>
-        </Tooltip>
-        <NavLink
-          to="/howitworks"
-          onClick={() => closeMenu()}
-          style={{ display: showHowItWorks }}
+      {showSideBar === "none" ? null : (
+        <Menu
+          width={310}
+          left
+          isOpen={menuState}
+          onStateChange={handleStateChange}
         >
-          How it Works?
-        </NavLink>
-        <span>
-          <strong>User:</strong>
-        </span>
-        <address>{auth ? auth.user.username : null}</address>
-        <button onClick={logout} className="btn-menu__mobile">
-          Logout
-        </button>
-      </Menu>
+          {
+            <SideBarMenu
+              info={info}
+              showBackButton={showBackButton}
+              showHowItWorks={showHowItWorks}
+              goBack={goBack}
+              logout={logout}
+              auth={auth}
+              closeMenu={closeMenu}
+            />
+          }
+        </Menu>
+      )}
       <nav className="desktop-nav">
-        <Tooltip title="Go back">
-          <ArrowBackIcon
-            className="btn-back"
-            onClick={goBack}
-            style={{ display: showBackButton }}
-          ></ArrowBackIcon>
-        </Tooltip>
-        <NavLink to="/howitworks" style={{ display: showHowItWorks }}>
-          How it Works?
-        </NavLink>
-        <span>
-          <strong>User:</strong>
-        </span>
-        <address>{auth ? auth.user.username : null}</address>
-        <button onClick={logout} className="btn-menu">
-          Logout
-        </button>
+        {
+          <SideBarMenu
+            info={info}
+            showBackButton={showBackButton}
+            showHowItWorks={showHowItWorks}
+            showSideBar={showSideBar}
+            goBack={goBack}
+            logout={logout}
+            auth={auth}
+          />
+        }
       </nav>
+      {title ? <Header title={title} /> : null}
       {children}
     </div>
   );
