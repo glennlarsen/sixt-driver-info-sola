@@ -8,6 +8,7 @@ import Head from "components/Head";
 import Layout from "components/Layout";
 import Logo from "components/Logo";
 import { Mobile } from "components/common/ScreenViewSizes";
+import { DRIVER_INFO_FORMS } from "constants/staticInfo";
 
 function Login() {
   const [auth] = useContext(AuthContext);
@@ -29,7 +30,7 @@ function Login() {
         <Mobile>
           <Logo info="Driver Info Forms" />
         </Mobile>
-        <LoginForm title="Login" info="Driver Info Forms" />
+        <LoginForm title="Login" info={DRIVER_INFO_FORMS} />
       </Layout>
     </Container>
   );

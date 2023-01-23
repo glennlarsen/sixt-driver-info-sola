@@ -12,6 +12,7 @@ import LanguageSelector from "components/common/LanguageSelector";
 import Layout from "components/Layout";
 import Logo from "components/Logo";
 import { Mobile } from "components/common/ScreenViewSizes";
+import { SOLA_1, SOLA_2, SOLA_3 } from "constants/staticInfo";
 
 function LiveForm() {
   const { formName } = useParams();
@@ -35,19 +36,19 @@ function LiveForm() {
         <Mobile>
           <Logo info={formName} />
         </Mobile>
-        {formName === "sola1" && (
+        {formName === SOLA_1 && (
           <DriverInformation
             title={content[lang]["heading"]}
             confirmation={content[lang]["confirmation"]}
           />
         )}
-        {formName === "sola2" && (
+        {formName === SOLA_2 && (
           <DriverInformation2
             title={content[lang]["heading"]}
             confirmation={content[lang]["confirmation"]}
           />
         )}
-        {formName === "sola3" && (
+        {formName === SOLA_3 && (
           <DriverInformation3
             title={content[lang]["heading"]}
             confirmation={content[lang]["confirmation"]}

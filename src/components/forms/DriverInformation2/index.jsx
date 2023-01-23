@@ -45,8 +45,8 @@ function DriverInformation2({ title, confirmation }) {
   // Function that will run when form is submitted
   async function onSubmit(data) {
     setLoading(true);
-    const message = await SendDriverInfo2(data);
-    if (message.success) {
+    const send = await SendDriverInfo2(data);
+    if (send.success) {
       setTimeout(() => {
         setLoading(false);
       }, 5000);

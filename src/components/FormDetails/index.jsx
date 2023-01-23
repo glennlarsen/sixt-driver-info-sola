@@ -5,7 +5,7 @@ import Header from "components/Header";
 
 import { useNavigate, useParams } from "react-router-dom";
 
-function FormDetails({title}) {
+function FormDetails({ title }) {
   const navigate = useNavigate();
   const { formName } = useParams();
 

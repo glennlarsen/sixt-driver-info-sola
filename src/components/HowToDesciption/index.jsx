@@ -11,7 +11,7 @@ import DoneAllIcon from "@mui/icons-material/DoneAll";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import Header from "components/Header";
 
-function HowToDesciption({title}) {
+function HowToDesciption({ title }) {
   return (
     <Box sx={{ width: "100%" }}>
       <Header title={title} />

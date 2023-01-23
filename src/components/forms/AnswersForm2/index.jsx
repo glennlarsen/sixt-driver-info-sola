@@ -21,6 +21,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CloseIcon from "@mui/icons-material/Close";
 import Collapse from "@mui/material/Collapse";
 import Header from "components/Header";
+import { NO_ANSWERS } from "constants/staticInfo";
 
 const theme = createTheme({
   status: {
@@ -171,10 +172,7 @@ function AnswersForm2({ title }) {
       <ThemeProvider theme={theme}>
         <Box className="answers-form">
           <Header title={title} />
-          <div className="no-answers">
-            No Answers Yet. Find a customer that can fill your Live Form! Click
-            Refresh if the result don't show automatically.
-          </div>
+          <div className="no-answers">{NO_ANSWERS}</div>
           <button onClick={refreshPage} type="submit">
             Refresh
           </button>
