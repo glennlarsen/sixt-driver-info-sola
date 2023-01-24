@@ -4,3 +4,7 @@ export const SOLA_1 = "sola1";
 export const SOLA_2 = "sola2";
 export const SOLA_3 = "sola3";
 export const NO_ANSWERS = "No Answers Yet. Find a customer that can fill your Live Form! Click Refresh if the result don't show automatically.";
+export const SOLA_2_TITLE = "Sola 2"
+export const SOLA_1_TITLE = "Sola 1"
+export const SOLA_3_TITLE = "Sola 3"
+export const UKNOWN_FORM = "Uknown Form";

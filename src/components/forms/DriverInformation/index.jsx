@@ -52,6 +52,7 @@ const DriverInformation = ({ title, confirmation }) => {
       }, 5000);
       setSubmitted(true);
       reset();
+      setDefaultCallingCode("NO");
     } else {
       setLoading(false);
       setSubmitted(false);
