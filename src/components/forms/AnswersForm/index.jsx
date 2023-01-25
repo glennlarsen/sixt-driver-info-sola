@@ -168,6 +168,8 @@ function AnswersForm({ title }) {
   }
 
   if (answers.length < 1) {
+    //Refresh page every 10 seconds to get new form data if no answers are received//
+    setTimeout(() => refreshPage(), 10000);
     return (
       <>
         <ThemeProvider theme={theme}>
