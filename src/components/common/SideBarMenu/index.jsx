@@ -24,6 +24,8 @@ const SideBarMenu = ({
   showHowItWorks,
   closeMenu,
 }) => {
+  const dividerColorMobile = { borderColor: "rgb(255 255 255 / 12%)" };
+
   return (
     <>
       <TabletAndDesktop>
@@ -73,7 +75,7 @@ const SideBarMenu = ({
 
       <Mobile>
         <Logo logoLight={"logoLight"} info={info} />
-        <Divider style={{ display: showSideBar }} />
+        <Divider style={{ display: showSideBar }} sx={dividerColorMobile} />
         <List style={{ display: showSideBar }}>
           <ListItem disablePadding>
             <ListItemButton component={NavLink} to="/forms" onClick={closeMenu}>
@@ -100,7 +102,7 @@ const SideBarMenu = ({
             </ListItemButton>
           </ListItem>
         </List>
-        <Divider style={{ display: showSideBar }} />
+        <Divider style={{ display: showSideBar }} sx={dividerColorMobile} />
         <List style={{ display: showSideBar }}>
           <ListItem disablePadding>
             <ListItemButton onClick={logout}>
