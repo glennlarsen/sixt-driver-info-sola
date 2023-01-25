@@ -29,7 +29,7 @@ function HowToDesciption({ title }) {
           <Paper className="box-how">
             <h2>2</h2>
             <p>
-              Open the <strong>same form</strong> on Tablet and PC
+              Select the <strong>same form</strong> on Tablet and PC
             </p>
             <OpenInFullIcon />
           </Paper>
