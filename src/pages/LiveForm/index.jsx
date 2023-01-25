@@ -13,6 +13,7 @@ import Layout from "components/Layout";
 import Logo from "components/Logo";
 import { Mobile } from "components/common/ScreenViewSizes";
 import { SOLA_1, SOLA_2, SOLA_3 } from "constants/staticInfo";
+import FormTitle from "components/FormTitle";
 
 function LiveForm() {
   const { formName } = useParams();
@@ -31,10 +32,10 @@ function LiveForm() {
         page="Liveform"
         description="Driver information form for clients to fill"
       />
-      <Layout info={formName} showSideBar="none">
+      <Layout info={FormTitle(formName)} showSideBar="none">
         <LanguageSelector />
         <Mobile>
-          <Logo info={formName} />
+          <Logo info={FormTitle(formName)} />
         </Mobile>
         {formName === SOLA_1 && (
           <DriverInformation
