@@ -1,6 +1,6 @@
 {
-  "short_name": "Sixt Driver Info Forms",
-  "name": "Gather customer information through forms and copy the information to your internal system or where ever you need it stored.",
+  "short_name": "Driver Info Forms",
+  "name": "Driver Info Forms",
   "icons": [
     {
       "src": "favicon.ico",
@@ -8,12 +8,12 @@
       "type": "image/x-icon"
     },
     {
-      "src": "logo.png",
+      "src": "logo-192x192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "logo.png",
+      "src": "logo-512x512.png",
       "type": "image/png",
       "sizes": "512x512"
     }
