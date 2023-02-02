@@ -16,8 +16,12 @@ const MuiTelInputStyled = styled(MuiTelInput)({
   },
 });
 
-const PhoneInput = ({ control, errors, defaultValue, onClick }) => {
+const PhoneInput = ({ control, errors, defaultValue, onClick, show }) => {
   const [lang] = useContext(LangContext);
+
+  if (!show) {
+    return null;
+  }
 
   return (
     <Controller

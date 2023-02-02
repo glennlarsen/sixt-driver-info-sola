@@ -56,3 +56,13 @@ button {
 .btn-delete:hover {
   color: red;
 }
+
+.btn-close {
+  color: white;
+  background: $color-dark;
+
+  &:hover {
+    color: $color-primary;
+    background: $color-dark;
+  }
+}

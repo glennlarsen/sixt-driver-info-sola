@@ -7,8 +7,12 @@ import { Controller } from "react-hook-form";
 import { content } from "constants/DriverFormContent";
 import { LangContext } from "utils/LangContext";
 
-const CountryInput = ({ control, errors, defaultValue, onCountrySelect }) => {
+const CountryInput = ({ control, errors, defaultValue, onCountrySelect, show }) => {
   const [lang] = useContext(LangContext);
+
+  if (!show) {
+    return null;
+  }
 
   return (
     <Controller

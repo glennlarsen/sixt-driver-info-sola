@@ -19,6 +19,8 @@ import { content } from "constants/DriverFormContent";
 import { LangContext } from "utils/LangContext";
 import ScrollTo from "components/common/ScrollTo";
 import Header from "components/Header";
+import SettingsButton from "components/common/SettingsButton";
+import SettingsModal from "components/common/SettingsModal";
 
 function DriverInformation2({ title, confirmation }) {
   const [submitted, setSubmitted] = useState(false);
@@ -26,6 +28,14 @@ function DriverInformation2({ title, confirmation }) {
   const [error, setError] = useState(false);
   const [defaultCallingCode, setDefaultCallingCode] = useState("NO");
   const [lang, setLang] = useContext(LangContext);
+  const [open, setOpen] = React.useState(false);
+  const openModal = () => setOpen(true);
+  const closeModal = () => setOpen(false);
+  const [settings, setSettings] = useState({
+    address: true,
+    phone: true,
+    email: true,
+  });
 
   const {
     register,
@@ -77,6 +87,10 @@ function DriverInformation2({ title, confirmation }) {
     config: { duration: 900 },
   });
 
+  const handleSettings = () => {
+    openModal();
+  };
+
   //Fixes scroll behaviour for android chrome in the driver forms//
   if (/Android/.test(navigator.appVersion)) {
     window.addEventListener("resize", function () {
@@ -124,28 +138,44 @@ function DriverInformation2({ title, confirmation }) {
       autoComplete="off"
       onSubmit={handleSubmit(onSubmit)}
     >
+      <SettingsButton handleSettings={handleSettings} />
+      <SettingsModal
+        open={open}
+        handleClose={closeModal}
+        settings={settings}
+        setSettings={setSettings}
+      />
       <Header title={title} />
+      <span style={{ textAlign: "center" }}>
+        {!settings.address && !settings.phone && !settings.email
+          ? "Please select at least one field to show in the settings menu"
+          : null}
+      </span>
       <CountryInput
         control={control}
         errors={errors}
         defaultValue=""
         onCountrySelect={setDefaultCallingCode}
+        show={settings.address}
       />
       <StreetInput
         register={register}
         errors={errors}
         onClick={() => ScrollTo("street")}
+        show={settings.address}
       />
       <Box gap={2} display="flex">
         <PostalInput
           register={register}
           errors={errors}
           onClick={() => ScrollTo("postal")}
+          show={settings.address}
         />
         <CityInput
           register={register}
           errors={errors}
           onClick={() => ScrollTo("city")}
+          show={settings.address}
         />
       </Box>
       <PhoneInput
@@ -153,11 +183,13 @@ function DriverInformation2({ title, confirmation }) {
         errors={errors}
         defaultValue={defaultCallingCode}
         onClick={() => ScrollTo("tel")}
+        show={settings.phone}
       />
       <EmailInput
         register={register}
         errors={errors}
         onClick={() => ScrollTo("email")}
+        show={settings.email}
       />
       <button type="submit">{content[lang]["submit"]}</button>
       <span onClick={() => onReset()} className="btn-reset">

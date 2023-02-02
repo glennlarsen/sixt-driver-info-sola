@@ -5,8 +5,12 @@ import ErrorRoundedIcon from "@mui/icons-material/ErrorRounded";
 import { content } from "constants/DriverFormContent";
 import { LangContext } from "utils/LangContext";
 
-const PostalInput = ({ register, errors, onClick }) => {
+const PostalInput = ({ register, errors, onClick, show }) => {
   const [lang] = useContext(LangContext);
+
+  if (!show) {
+    return null;
+  }
 
   return (
     <FormTextField
