@@ -25,7 +25,7 @@ function DriverInformation2({ title, confirmation }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [defaultCallingCode, setDefaultCallingCode] = useState("NO");
-  const [lang] = useContext(LangContext);
+  const [lang, setLang] = useContext(LangContext);
 
   const {
     register,
@@ -49,6 +49,9 @@ function DriverInformation2({ title, confirmation }) {
     if (send.success) {
       setTimeout(() => {
         setLoading(false);
+        setLang("en");
+        localStorage.setItem("lang", "en");
+        document.documentElement.setAttribute("lang", "en");
       }, 5000);
       setSubmitted(true);
       reset();
