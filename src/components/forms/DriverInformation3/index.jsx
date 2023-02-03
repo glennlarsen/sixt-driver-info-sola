@@ -128,7 +128,7 @@ function DriverInformation3({ title, confirmation }) {
         settings={settings}
         setSettings={setSettings}
       />
-      <Header title={title} />
+      <Header title={title} margin={0} />
       <span style={{ textAlign: "center" }}>
         {!settings.address && !settings.phone && !settings.email
           ? "Please select at least one field to show in the settings menu"

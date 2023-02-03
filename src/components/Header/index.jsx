@@ -1,9 +1,9 @@
 import React from "react";
 
-function Header({ title }) {
+function Header({ title, margin }) {
   return (
     <header>
-      <h1>{title}</h1>
+      <h1 style={{ margin: margin + "px" }}>{title}</h1>
     </header>
   );
 }
