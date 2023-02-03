@@ -1,5 +1,6 @@
 import Fab from "@mui/material/Fab";
 import SettingsIcon from "@mui/icons-material/Settings";
+import { TabletAndDesktop } from "components/common/ScreenViewSizes";
 
 const fabStyles = {
   "&.MuiFab-root": {
@@ -14,16 +15,19 @@ const fabStyles = {
   },
 };
 
+  //Tablet and desktop View
 function SettingsButton({ handleSettings }) {
   return (
-    <Fab
-      size="small"
-      sx={fabStyles}
-      aria-label="settings"
-      onClick={handleSettings}
-    >
-      <SettingsIcon fontSize="small" />
-    </Fab>
+    <TabletAndDesktop>
+      <Fab
+        size="small"
+        sx={fabStyles}
+        aria-label="settings"
+        onClick={handleSettings}
+      >
+        <SettingsIcon fontSize="small" />
+      </Fab>
+    </TabletAndDesktop>
   );
 }
 
