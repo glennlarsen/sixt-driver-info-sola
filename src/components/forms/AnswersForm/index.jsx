@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
@@ -22,6 +22,9 @@ import CloseIcon from "@mui/icons-material/Close";
 import Collapse from "@mui/material/Collapse";
 import Header from "components/Header";
 import { NO_ANSWERS } from "constants/staticInfo";
+import SettingsButton from "components/common/SettingsButton";
+import AnswersSettingsModal from "components/common/AnswersSettingsModal";
+import { SettingsContext } from "utils/SettingsContext";
 
 const theme = createTheme({
   status: {
@@ -59,6 +62,10 @@ function AnswersForm({ title }) {
   const phoneRef = useRef(null);
   const emailRef = useRef(null);
   const [show, setShow] = useState(true);
+  const [open, setOpen] = useState(false);
+  const openModal = () => setOpen(true);
+  const closeModal = () => setOpen(false);
+  const [upperCase, setUpperCase] = useContext(SettingsContext);
 
   const refreshPage = () => {
     navigate(0);
@@ -144,6 +151,10 @@ function AnswersForm({ title }) {
     });
   };
 
+  const handleSettings = () => {
+    openModal();
+  };
+
   async function handleDelete(id) {
     const deleteDriv = await DeleteDriver(id);
     if (deleteDriv.success) {
@@ -193,8 +204,13 @@ function AnswersForm({ title }) {
         .map((item) => {
           const { country, street, postal, city, phone, email, publishedAt } =
             item.attributes;
-          const phoneFormated = phone ? phone.replace(/\s+/g, "") : "";
-          var options = {
+          const phoneFormated = phone ? phone.replace(/\s+/g, "") : " ";
+          const countryExist = country ? country : " ";
+          const streetExist = street ? street : " ";
+          const postalExist = postal ? postal : " ";
+          const cityExist = city ? city : " ";
+          const emailExist = email ? email : " ";
+          const options = {
             weekday: "long",
             year: "numeric",
             month: "long",
@@ -214,6 +230,8 @@ function AnswersForm({ title }) {
                 autoComplete="off"
                 className="answers-form"
               >
+                <SettingsButton handleSettings={handleSettings} />
+                <AnswersSettingsModal open={open} handleClose={closeModal} />
                 <Header title={title} />
                 <span className="last-received">
                   <strong>Last Answer: </strong>
@@ -234,10 +252,10 @@ function AnswersForm({ title }) {
                             edge="end"
                             color="primary"
                             sx={{ boxShadow: "none" }}
+                            onClick={copyCountry}
                           >
                             <ContentCopyIcon
                               sx={{ height: ".8em", width: ".8em" }}
-                              onClick={copyCountry}
                             />
                           </IconButton>
                         </InputAdornment>
@@ -246,7 +264,12 @@ function AnswersForm({ title }) {
                     variant="standard"
                     label="Country"
                     type="text"
-                    defaultValue={country ? country.toUpperCase() : ""}
+                    value={
+                      upperCase
+                        ? countryExist.toUpperCase()
+                        : countryExist[0].toUpperCase() +
+                          countryExist.substring(1).toLowerCase()
+                    }
                     inputRef={countryRef}
                   />
                 </Tooltip>
@@ -261,10 +284,10 @@ function AnswersForm({ title }) {
                             edge="end"
                             color="primary"
                             sx={{ boxShadow: "none" }}
+                            onClick={copyStreet}
                           >
                             <ContentCopyIcon
                               sx={{ height: ".8em", width: ".8em" }}
-                              onClick={copyStreet}
                             />
                           </IconButton>
                         </InputAdornment>
@@ -273,7 +296,12 @@ function AnswersForm({ title }) {
                     variant="standard"
                     label="Street"
                     type="text"
-                    defaultValue={street ? street.toUpperCase() : ""}
+                    value={
+                      upperCase
+                        ? streetExist.toUpperCase()
+                        : streetExist[0].toUpperCase() +
+                          streetExist.substring(1).toLowerCase()
+                    }
                     inputRef={streetRef}
                   />
                 </Tooltip>
@@ -289,10 +317,10 @@ function AnswersForm({ title }) {
                               edge="end"
                               color="primary"
                               sx={{ boxShadow: "none" }}
+                              onClick={copyPostal}
                             >
                               <ContentCopyIcon
                                 sx={{ height: ".8em", width: ".8em" }}
-                                onClick={copyPostal}
                               />
                             </IconButton>
                           </InputAdornment>
@@ -301,7 +329,12 @@ function AnswersForm({ title }) {
                       variant="standard"
                       label="Postal Code"
                       type="text"
-                      defaultValue={postal ? postal.toUpperCase() : ""}
+                      value={
+                        upperCase
+                          ? postalExist.toUpperCase()
+                          : postalExist[0].toUpperCase() +
+                            postalExist.substring(1).toLowerCase()
+                      }
                       inputRef={postalRef}
                     />
                   </Tooltip>
@@ -316,10 +349,10 @@ function AnswersForm({ title }) {
                               edge="end"
                               color="primary"
                               sx={{ boxShadow: "none" }}
+                              onClick={copyCity}
                             >
                               <ContentCopyIcon
                                 sx={{ height: ".8em", width: ".8em" }}
-                                onClick={copyCity}
                               />
                             </IconButton>
                           </InputAdornment>
@@ -329,7 +362,12 @@ function AnswersForm({ title }) {
                       label="City"
                       type="text"
                       fullWidth
-                      defaultValue={city ? city.toUpperCase() : ""}
+                      value={
+                        upperCase
+                          ? cityExist.toUpperCase()
+                          : cityExist[0].toUpperCase() +
+                            cityExist.substring(1).toLowerCase()
+                      }
                       inputRef={cityRef}
                     />
                   </Tooltip>
@@ -345,10 +383,10 @@ function AnswersForm({ title }) {
                             edge="end"
                             color="primary"
                             sx={{ boxShadow: "none" }}
+                            onClick={copyPhone}
                           >
                             <ContentCopyIcon
                               sx={{ height: ".8em", width: ".8em" }}
-                              onClick={copyPhone}
                             />
                           </IconButton>
                         </InputAdornment>
@@ -372,10 +410,10 @@ function AnswersForm({ title }) {
                             edge="end"
                             color="primary"
                             sx={{ boxShadow: "none" }}
+                            onClick={copyEmail}
                           >
                             <ContentCopyIcon
                               sx={{ height: ".8em", width: ".8em" }}
-                              onClick={copyEmail}
                             />
                           </IconButton>
                         </InputAdornment>
@@ -384,7 +422,12 @@ function AnswersForm({ title }) {
                     variant="standard"
                     label="Email"
                     type="email"
-                    defaultValue={email ? email.toUpperCase() : ""}
+                    value={
+                      upperCase
+                        ? emailExist.toUpperCase()
+                        : emailExist[0].toUpperCase() +
+                          emailExist.substring(1).toLowerCase()
+                    }
                     inputRef={emailRef}
                   />
                 </Tooltip>
