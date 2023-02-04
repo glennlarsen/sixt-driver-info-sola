@@ -116,6 +116,10 @@ form {
   color: white !important;
   width: 100% !important;
   border-radius: 12px !important;
+
+  @media only screen and (min-width: 600px) {
+    width: 400px !important;
+  }
 }
 
 .react-confirm-alert-button-group {

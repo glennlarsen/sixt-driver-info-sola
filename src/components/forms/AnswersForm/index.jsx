@@ -1,4 +1,4 @@
-import React, { useRef, useState, useContext } from "react";
+import React, { useRef, useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
@@ -66,6 +66,14 @@ function AnswersForm({ title }) {
   const openModal = () => setOpen(true);
   const closeModal = () => setOpen(false);
   const [upperCase, setUpperCase] = useContext(SettingsContext);
+  let timer;
+
+  useEffect(() => {
+    //Refresh page every 10 seconds to get new form data if no answers are received//
+    if (answers.length > 0) {
+      return () => clearTimeout(timer);
+    }
+  }, []);
 
   const refreshPage = () => {
     navigate(0);
@@ -180,7 +188,7 @@ function AnswersForm({ title }) {
 
   if (answers.length < 1) {
     //Refresh page every 10 seconds to get new form data if no answers are received//
-    setTimeout(() => refreshPage(), 10000);
+    timer = setTimeout(() => refreshPage(), 10000);
     return (
       <>
         <ThemeProvider theme={theme}>
