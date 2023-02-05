@@ -9,6 +9,7 @@ import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
 import PlaylistAddCheckIcon from "@mui/icons-material/PlaylistAddCheck";
 import DoneAllIcon from "@mui/icons-material/DoneAll";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+import TipsAndUpdatesIcon from "@mui/icons-material/TipsAndUpdates";
 import Header from "components/Header";
 
 function HowToDesciption({ title }) {
@@ -70,6 +71,18 @@ function HowToDesciption({ title }) {
               driver when done to avoid any GDPR cases.
             </p>
             <ContentCopyIcon />
+          </Paper>
+        </Grid>
+        <Grid xs={6} width="100%">
+          <Paper className="box-tip">
+            <h2>Tips!</h2>
+            <p>
+              Use your pad's <strong>built in Browser</strong> for best scroll
+              functionality and <strong>save</strong> the website to your{" "}
+              <strong>home screen</strong>. You can <strong>hide</strong> form
+              fields by the <strong>settings button</strong> in liveform.
+            </p>
+            <TipsAndUpdatesIcon fontSize="large" />
           </Paper>
         </Grid>
       </Grid>
