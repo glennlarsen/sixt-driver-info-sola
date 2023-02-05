@@ -66,6 +66,7 @@ function DriverInformation3({ title, confirmation }) {
       setSubmitted(true);
       reset();
       setDefaultCallingCode("NO");
+      setSettings({ address: true, phone: true, email: true });
     } else {
       setLoading(false);
       setSubmitted(false);
