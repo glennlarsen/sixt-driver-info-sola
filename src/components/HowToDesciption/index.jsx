@@ -80,7 +80,7 @@ function HowToDesciption({ title }) {
               Use your pad's <strong>built in Browser</strong> for best scroll
               functionality and <strong>save</strong> the website to your{" "}
               <strong>home screen</strong>. You can <strong>hide</strong> form
-              fields by the <strong>settings button</strong> in liveform.
+              fields with the <strong>settings button</strong> in liveform.
             </p>
             <TipsAndUpdatesIcon fontSize="large" />
           </Paper>
