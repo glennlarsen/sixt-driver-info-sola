@@ -227,6 +227,15 @@ function AnswersForm({ title }) {
             return new Date(value).toLocaleDateString(locale, options);
           };
 
+          //Delete all answers if last answer is more than 15 minutes old
+          const nowDate = new Date();
+          const publishTime = new Date(publishedAt);
+
+          if (answers && nowDate - publishTime > 15 * 60 * 1000) {
+            // Content is more than 15 minutes old, delete it
+            handleDelete(item.id);
+          }
+
           return (
             <ThemeProvider theme={theme} key={item.id}>
               <Box
