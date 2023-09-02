@@ -22,6 +22,7 @@ import Header from "components/Header";
 import SettingsButton from "components/common/SettingsButton";
 import SettingsModal from "components/common/SettingsModal";
 import { useOnlineStatus } from "utils/useOnlineStatus";
+import useLocalStorage from "utils/UseLocalStorage";
 
 const DriverInformation = ({ title, confirmation }) => {
   const [submitted, setSubmitted] = useState(false);
@@ -37,6 +38,10 @@ const DriverInformation = ({ title, confirmation }) => {
     tel: true,
     email: true,
   });
+  const [disableButton, setDisableButton] = useLocalStorage(
+    "submitDisabled",
+    true
+  );
   const onlineStatus = useOnlineStatus();
 
   const {
@@ -146,6 +151,8 @@ const DriverInformation = ({ title, confirmation }) => {
         handleClose={closeModal}
         settings={settings}
         setSettings={setSettings}
+        disableButton={disableButton}
+        setDisableButton={setDisableButton}
         unregister={unregister}
         errors={errors}
       />
@@ -195,7 +202,13 @@ const DriverInformation = ({ title, confirmation }) => {
         onClick={() => ScrollTo("email")}
         show={settings.email}
       />
-      <button type="submit">{content[lang]["submit"]}</button>
+      <button
+        type="submit"
+        style={{ opacity: disableButton ? 0.4 : 1 }}
+        disabled={disableButton ? true : false}
+      >
+        {content[lang]["submit"]}
+      </button>
       <span onClick={() => onReset()} className="btn-reset">
         {content[lang]["reset"]}
       </span>

@@ -4,15 +4,25 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Switch from "@mui/material/Switch";
 import ModalLayout from "../ModalLayout";
 
-function SettingsModal({ open, handleClose, settings, setSettings, unregister, errors }) {
+function SettingsModal({
+  open,
+  handleClose,
+  settings,
+  setSettings,
+  unregister,
+  errors,
+  setDisableButton,
+  disableButton,
+}) {
   const handleChange = (event) => {
     setSettings({
       ...settings,
       [event.target.name]: event.target.checked,
     });
-    if(!event.target.checked && errors[event.target.name]) {
+    if (!event.target.checked && errors[event.target.name]) {
       unregister([event.target.name]);
     }
+    setDisableButton(event.target.checked);
   };
 
   return (
@@ -33,11 +43,7 @@ function SettingsModal({ open, handleClose, settings, setSettings, unregister, e
         />
         <FormControlLabel
           control={
-            <Switch
-              checked={settings.tel}
-              onChange={handleChange}
-              name="tel"
-            />
+            <Switch checked={settings.tel} onChange={handleChange} name="tel" />
           }
           label="Phone"
         />
@@ -50,6 +56,24 @@ function SettingsModal({ open, handleClose, settings, setSettings, unregister, e
             />
           }
           label="Email"
+        />
+        <Typography
+          id="transition-modal-title"
+          variant="h6"
+          component="h2"
+          mt={3}
+        >
+          Disable Send Button
+        </Typography>
+        <FormControlLabel
+          control={
+            <Switch
+              checked={disableButton}
+              onChange={handleChange}
+              name="button"
+            />
+          }
+          label="Disable Button"
         />
       </FormGroup>
       <button className="btn-close" onClick={handleClose}>
